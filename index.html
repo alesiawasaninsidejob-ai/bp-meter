@@ -1,23 +1,29 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Brooklyn (BP) Energy &amp; Happiness Meter</title>
+<title>Brooklyn (BP) — Energy &amp; Happiness Tracker</title>
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-180.png">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ff7eb3">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#111827">
 <style>
-body{margin:0;font-family:system-ui,sans-serif;background:linear-gradient(160deg,#ffe3f1,#e3f0ff);color:#333;text-align:center}
-h1{font-size:1.4em;margin:16px 8px 4px;color:#c2185b}.card{background:#fff;margin:12px auto;max-width:560px;border-radius:20px;padding:14px;box-shadow:0 4px 14px #0001}
-.meters{display:flex;gap:12px;justify-content:center}.m{flex:1}.face{font-size:3em}.bar{height:18px;background:#eee;border-radius:9px;overflow:hidden}
-.fill{height:100%;transition:width .5s}#ef{background:#ffb300}#hf{background:#ec407a}.status{font-size:1.15em;font-weight:600;margin-top:10px}
-select,button{font-size:1em;padding:6px 10px;border-radius:10px;border:1px solid #ccc}canvas{width:100%;height:auto}footer{font-size:.8em;color:#777;padding:16px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Helvetica Neue",Arial,sans-serif;background:#0f141c;color:#d6dbe3}
+header{padding:20px 20px 8px;max-width:760px;margin:auto}h1{font-size:1.25em;font-weight:600;margin:0;color:#f3f4f6}.sub{color:#8b95a5;font-size:.85em;margin-top:4px}
+main{max-width:760px;margin:auto;padding:0 12px}.card{background:#171e29;border:1px solid #263041;border-radius:10px;padding:16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.k{font-size:.72em;text-transform:uppercase;letter-spacing:.08em;color:#8b95a5}
+.v{font-size:2em;font-weight:600;color:#f3f4f6;margin:4px 0 8px}.v.s{font-size:1.05em;margin-top:8px}.bar{height:6px;background:#263041;border-radius:3px;overflow:hidden}
+.fill{height:100%;transition:width .5s}#ef{background:#4f8cff}#hf{background:#2ec4a6}
+.row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+select{background:#0f141c;color:#d6dbe3;border:1px solid #334155;border-radius:6px;padding:6px 10px;font:inherit}
+canvas{width:100%;height:auto;display:block}.lg{font-size:.82em;color:#8b95a5}.lg i{display:inline-block;width:12px;height:3px;vertical-align:middle;margin:0 6px 0 12px}
+footer{max-width:760px;margin:auto;padding:12px 20px 24px;font-size:.78em;color:#6b7585}
 </style></head><body>
-<h1>Brooklyn (BP) Energy &amp; Happiness Meter</h1>
-<div class="card"><div><b>BP right now</b> <span id="now"></span></div>
-<div class="meters"><div class="m"><div class="face" id="efc"></div>⚡ Energy <b id="ev"></b>%<div class="bar"><div class="fill" id="ef"></div></div></div>
-<div class="m"><div class="face" id="hfc"></div>💖 Happiness <b id="hv"></b>%<div class="bar"><div class="fill" id="hf"></div></div></div></div>
-<div class="status" id="st"></div></div>
-<div class="card"><label>Day: <select id="day"></select></label>
-<canvas id="c" width="560" height="280"></canvas>
-<div><span style="color:#ffb300">■ Energy</span> &nbsp; <span style="color:#ec407a">■ Happiness</span> &nbsp; (10-minute steps, Central Time)</div></div>
-<footer>Just for fun! 💕 Made with love for BP. Not science, not stalking — just vibes.</footer>
+<header><h1>Brooklyn (BP) — Energy &amp; Happiness Tracker</h1><div class="sub">Current status · <span id="now"></span></div></header>
+<main><div class="card grid">
+<div><div class="k">Energy</div><div class="v"><span id="ev"></span>%</div><div class="bar"><div class="fill" id="ef"></div></div></div>
+<div><div class="k">Happiness</div><div class="v"><span id="hv"></span>%</div><div class="bar"><div class="fill" id="hf"></div></div></div>
+<div><div class="k">Current phase</div><div class="v s" id="st"></div></div>
+<div><div class="k">Next transition</div><div class="v s" id="nx"></div></div></div>
+<div class="card"><div class="row"><div class="k">Daily profile · 10-minute intervals · Central Time</div><select id="day" aria-label="Day"></select></div>
+<canvas id="c" width="720" height="320"></canvas>
+<div class="lg"><i style="background:#4f8cff"></i>Energy<i style="background:#2ec4a6"></i>Happiness</div></div></main>
+<footer>Modeled estimates, not measured data.</footer>
 <script src="model.js"></script><script src="app.js"></script></body></html>

@@ -15,14 +15,14 @@ function work(m){ // 690..1020
 function calc(day,m){ // day 0=Sun
   let e,h,p;
   const wk=day>=1&&day<=4, works=[1,3,4].includes(day);
-  if(!wk){ e=80+5*Math.sin(m/90); h=90+4*Math.sin(m/120); p=m<540?'Weekend sleep-in mode 😴':'Off duty & thriving 🌞';
+  if(!wk){ e=80+5*Math.sin(m/90); h=90+4*Math.sin(m/120); p=m<540?'Off day — morning':'Off day';
     if(m<480){e=60+sm((m-360)/120)*20;} }
-  else if(m<420){ e=55+sm((m-360)/60)*40; h=60+sm((m-360)/60)*32; p='Pre-coffee loading… ☕'; }
-  else if(m<670){ [e,h]=study(m); p=m<540?'Fresh brain, big plans 📚':m<600?'Mid-morning slump detected 🫠':'Highlighters running low ✏️'; }
-  else if(m<690){ [e,h]=study(m); p='Freedom is near! 🚀'; }
-  else if(works&&m<1020){ [e,h]=work(m); p=m<840?'Shift mode: activated 💼':m<960?'Powered by snacks 🍪':'Counting down to 5 ⏳'; }
-  else if(works){ const s=sm((m-1020)/60); e=25+s*45; h=40+s*50; p='Clocked out, recovering 🛋️'; }
-  else { e=85-5*sm((m-690)/400); h=94; p='Tuesday freedom! 🎉'; }
+  else if(m<420){ e=55+sm((m-360)/60)*40; h=60+sm((m-360)/60)*32; p='Pre-session'; }
+  else if(m<670){ [e,h]=study(m); p='Study session — declining'; }
+  else if(m<690){ [e,h]=study(m); p='Pre-break recovery'; }
+  else if(works&&m<1020){ [e,h]=work(m); p='Work shift — declining'; }
+  else if(works){ const s=sm((m-1020)/60); e=25+s*45; h=40+s*50; p='Evening recovery'; }
+  else { e=85-5*sm((m-690)/400); h=94; p='Free afternoon — stable'; }
   const c=x=>Math.round(Math.max(3,Math.min(100,x)));
   return {energy:c(e),happiness:c(h),phase:p};
 }
