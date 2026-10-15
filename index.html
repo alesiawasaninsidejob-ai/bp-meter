@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Brooklyn (BP) Energy &amp; Happiness Meter</title>
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ff7eb3">
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:linear-gradient(160deg,#ffe3f1,#e3f0ff);color:#333;text-align:center}
+h1{font-size:1.4em;margin:16px 8px 4px;color:#c2185b}.card{background:#fff;margin:12px auto;max-width:560px;border-radius:20px;padding:14px;box-shadow:0 4px 14px #0001}
+.meters{display:flex;gap:12px;justify-content:center}.m{flex:1}.face{font-size:3em}.bar{height:18px;background:#eee;border-radius:9px;overflow:hidden}
+.fill{height:100%;transition:width .5s}#ef{background:#ffb300}#hf{background:#ec407a}.status{font-size:1.15em;font-weight:600;margin-top:10px}
+select,button{font-size:1em;padding:6px 10px;border-radius:10px;border:1px solid #ccc}canvas{width:100%;height:auto}footer{font-size:.8em;color:#777;padding:16px}
+</style></head><body>
+<h1>Brooklyn (BP) Energy &amp; Happiness Meter</h1>
+<div class="card"><div><b>BP right now</b> <span id="now"></span></div>
+<div class="meters"><div class="m"><div class="face" id="efc"></div>⚡ Energy <b id="ev"></b>%<div class="bar"><div class="fill" id="ef"></div></div></div>
+<div class="m"><div class="face" id="hfc"></div>💖 Happiness <b id="hv"></b>%<div class="bar"><div class="fill" id="hf"></div></div></div></div>
+<div class="status" id="st"></div></div>
+<div class="card"><label>Day: <select id="day"></select></label>
+<canvas id="c" width="560" height="280"></canvas>
+<div><span style="color:#ffb300">■ Energy</span> &nbsp; <span style="color:#ec407a">■ Happiness</span> &nbsp; (10-minute steps, Central Time)</div></div>
+<footer>Just for fun! 💕 Made with love for BP. Not science, not stalking — just vibes.</footer>
+<script src="model.js"></script><script src="app.js"></script></body></html>
