@@ -15,4 +15,4 @@ x.strokeStyle='#475569';x.beginPath();x.moveTo(L,T);x.lineTo(L,T+ph);x.lineTo(W-
 [['energy','#4f8cff'],['happiness','#2ec4a6']].forEach(([k,col])=>{x.strokeStyle=col;x.lineWidth=2;x.beginPath();
 for(let m=360;m<=1320;m+=10){const X=L+(m-360)/960*pw,Y=T+ph*(1-BP.calc(+$('day').value,m)[k]/100);m==360?x.moveTo(X,Y):x.lineTo(X,Y);}x.stroke();});}
 $('day').onchange=draw;const t=now();$('day').value=t.day;draw();setInterval(now,60000);
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
+if('serviceWorker'in navigator){navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>r.update());let d=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!d){d=true;location.reload();}});}
